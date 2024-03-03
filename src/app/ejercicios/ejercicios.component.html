@@ -1,0 +1,30 @@
+<h3>{{titulo}}</h3>
+<table class="table table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of ejercicios;let i=index;">
+            <td>{{e.codigo}}</td>
+            <td>{{e.nombre}}</td>
+            <td>{{e.descripcion}}</td>
+        </tr>
+        <tr *ngIf="ejercicios.length==0">
+            <td colspan="3">
+                Cargando...
+            </td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="ejercicios.length>0">
+        <tr>
+            <td colspan="3">
+                <button class="btn btn-primary">Agregar</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+

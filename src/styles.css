@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+
+#content {
+    margin-top: 1em;
+    background-color: white;
+    border-radius: 0.3em;
+    box-shadow: 0em 0.1em 0.2em #ccc;
+    padding: 0;
+}
+
+#header {
+    background-color: #E03137;
+    color: white;
+    padding: 0.5em;
+    border-radius: 0.3em 0.3em 0 0;
+}
+
+#header h1 {
+    font-size: 2em;
+}
+
+#nav {
+    margin: 0;
+    padding: 0em;
+    background-color: rgba(224, 49, 55, 0.67);
+}
+
+#nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav ul li {
+    display: inline-block;
+    padding: 0em;
+    margin: 0;
+    transition: all 500ms;
+}
+
+#nav ul li:hover {
+    background-color: #E03137;
+}
+
+#nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em;
+    display: inline-block;
+}
+
+.activo {
+    border-bottom: 2px solid yellow;
+}
+
+#main {
+    padding: 0.5em;
+}
+
+#footer {
+    margin-top: 0.5px;
+    border-top: 1px solid #eee;
+    padding: 0.5em;
+    color: gray;
+}
