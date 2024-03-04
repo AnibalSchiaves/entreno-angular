@@ -13,11 +13,15 @@ export class EjerciciosService {
   constructor(
     private http:HttpClient
   ) { 
-    this.url_base = env.api;
+    this.url_base = env.api+"ejercicios";
   }
 
   getEjercicios() {
-      return this.http.get<Ejercicio[]>(this.url_base+"ejercicios");
+      return this.http.get<Ejercicio[]>(this.url_base);
+  }
+
+  addEjercicio(ejercicio:Ejercicio) {
+    return this.http.post<Ejercicio>(this.url_base, ejercicio);
   }
 
 

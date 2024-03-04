@@ -1,0 +1,28 @@
+<h3>{{modo}} de Ejercicio</h3>
+<form #formEjercicio="ngForm" class="form col-lg-10" (submit)="onSubmit()">
+    <div class="form-group">
+        <label>
+            Código
+            <span class="label alert-danger validacion" *ngIf="!codigo.valid && codigo.touched">El código es requerido</span>
+        </label>
+        <input type="text" class="form-control" name="codigo" 
+            [(ngModel)]="ejercicio.codigo" #codigo="ngModel" required>
+    </div>
+    <div class="form-group">
+        <label>
+            Nombre
+            <span class="label alert-danger validacion" *ngIf="!nombre.valid && nombre.touched">El nombre es requerido</span>
+        </label>
+        <input type="text" class="form-control" name="nombre" 
+            [(ngModel)]="ejercicio.nombre" #nombre="ngModel" required>
+        
+    </div>
+    <div class="form-group">
+        <label class="form-label">Descripción</label>
+        <textarea class="form-control" name="descripcion" [(ngModel)]="ejercicio.descripcion" #descripcion="ngModel"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" [disabled]="!formEjercicio.valid"/>
+        <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+</form>

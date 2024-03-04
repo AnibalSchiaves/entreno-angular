@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EjerciciosService } from '../services/ejercicios.service';
 import { Ejercicio } from '../model/ejercicio';
-import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ejercicios',
@@ -14,7 +14,8 @@ export class EjerciciosComponent {
   public ejercicios:Ejercicio[];
 
   constructor(
-    private service:EjerciciosService
+    private service:EjerciciosService,
+    private _router:Router
   ) {
     this.titulo = "Administrar Ejercicios"
     this.ejercicios = [];
@@ -38,5 +39,9 @@ export class EjerciciosComponent {
 
   sleep(ms:number) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  alta() {
+    this._router.navigate(['ejercicios','nuevo']);
   }
 }
