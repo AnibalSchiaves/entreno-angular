@@ -22,6 +22,11 @@ export class EjerciciosComponent {
   }
 
   ngOnInit() {
+    this.cargarDatos();
+  }
+
+  cargarDatos() {
+    this.ejercicios = [];
     this.sleep(2000).then(//retardo a proposito 2 segundos
       () => {
         this.service.getEjercicios().subscribe({
@@ -33,8 +38,7 @@ export class EjerciciosComponent {
           }
         });
       }
-    )
-
+    );
   }
 
   sleep(ms:number) {
@@ -43,5 +47,29 @@ export class EjerciciosComponent {
 
   alta() {
     this._router.navigate(['ejercicios','nuevo']);
+  }
+
+  editar(id:string) {
+    this._router.navigate(['ejercicios',id]);
+  }
+
+  borrar(id:string) {
+    if (confirm("¿Está seguro que desea borrar el ejercicio?")) {
+      this.service.deleteEjercicio(id).subscribe({
+        next:(resp) => {
+          alert("El ejercicio ha sido borrado");
+          //this.cargarDatos();
+          let borrado:Ejercicio | undefined = this.ejercicios.find((e:Ejercicio) => e.codigo===resp.codigo);
+          if (borrado) {
+            let index = this.ejercicios.indexOf(borrado);
+            this.ejercicios.splice(index);
+          }
+        },
+        error:(err) => {
+          console.error("Hubo un error al borrar el ejercicio",err);
+          alert("El ejercicio no se pudo borrar");
+        }
+      })
+    }
   }
 }

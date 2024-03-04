@@ -5,6 +5,7 @@
             <th>Código</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -12,6 +13,15 @@
             <td>{{e.codigo}}</td>
             <td>{{e.nombre}}</td>
             <td>{{e.descripcion}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="editar(e.id)" title="Editar el ejercicio">
+                    <span class="material-icons">edit_note</span>
+                </button>
+                <button class="btn btn-secondary" (click)="borrar(e.id)" title="Borrar el ejercicio">
+                    <span class="material-icons">delete</span>
+                </button>
+                
+            </td>
         </tr>
         <tr *ngIf="ejercicios.length==0">
             <td colspan="3">

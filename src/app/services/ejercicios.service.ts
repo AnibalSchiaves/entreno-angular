@@ -20,8 +20,20 @@ export class EjerciciosService {
       return this.http.get<Ejercicio[]>(this.url_base);
   }
 
+  getEjercicio(id:string) {
+    return this.http.get<Ejercicio>(this.url_base+"/"+id);
+  }
+
   addEjercicio(ejercicio:Ejercicio) {
     return this.http.post<Ejercicio>(this.url_base, ejercicio);
+  }
+
+  putEjercicio(ejercicio:Ejercicio) {
+    return this.http.put<Ejercicio>(this.url_base+"/"+ejercicio.id, ejercicio);
+  }
+
+  deleteEjercicio(id:string) {
+    return this.http.delete<Ejercicio>(this.url_base+"/"+id);
   }
 
 

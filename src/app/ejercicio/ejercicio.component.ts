@@ -25,7 +25,20 @@ export class EjercicioComponent {
 
   ngOnInit() {
     this._activatedRoute.params.forEach((params:Params) => {
-      console.log(params);
+      let id = params['id'];
+      if (id) {
+        console.log(id);
+        this.ejercicioService.getEjercicio(id).subscribe({
+          next:(resp:Ejercicio) => {
+            this.ejercicio = resp;
+            this.modo ="Edición";
+          },
+          error:(err) => {
+            console.log("Ha ocurrido un error al recuperar el ejercicio",err);
+            alert("Ha ocurrido un error al recuperar el ejercicio");
+          }
+        })
+      }
     })
   }
 
@@ -34,16 +47,29 @@ export class EjercicioComponent {
   }
 
   onSubmit() {
-    this.ejercicioService.addEjercicio(this.ejercicio).subscribe({
-      next:(resp) => {
-        alert('El ejercicio agregado correctamente');
-        this._router.navigate(['ejercicios']);
-      },
-      error:(err) => {
-        console.error(err);
-        alert('Error al guardar el ejercicio');
-      }
-    })
+    if (this.modo=="Alta") {
+      this.ejercicioService.addEjercicio(this.ejercicio).subscribe({
+        next:(resp) => {
+          alert('Ejercicio agregado correctamente');
+          this._router.navigate(['ejercicios']);
+        },
+        error:(err) => {
+          console.error(err);
+          alert('Error al guardar el ejercicio');
+        }
+      });
+    } else {
+      this.ejercicioService.putEjercicio(this.ejercicio).subscribe({
+        next:(resp) => {
+          alert('Ejercicio modificado correctamente');
+          this._router.navigate(['ejercicios']);
+        },
+        error:(err) => {
+          console.error(err);
+          alert('Error al guardar el ejercicio');
+        }
+      });
+    }
   }
 
 }
