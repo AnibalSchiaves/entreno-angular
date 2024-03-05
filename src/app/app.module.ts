@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { EjercicioComponent } from './ejercicio/ejercicio.component';
+import { EntrenamientosComponent } from './entrenamientos/entrenamientos.component';
+import { FechaPipe } from './pipes/fecha.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { EjercicioComponent } from './ejercicio/ejercicio.component';
     ErrorComponent,
     EjerciciosComponent,
     EjercicioComponent,
+    EntrenamientosComponent,
+    FechaPipe,
   ],
   imports: [
     BrowserModule,

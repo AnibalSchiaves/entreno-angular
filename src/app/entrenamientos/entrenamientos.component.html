@@ -1,0 +1,52 @@
+<h3>{{titulo}}</h3>
+<div id="filtros" class="row">
+    <div class="form-group col-lg-5">
+        <label>Año</label>
+        <select class="form-control" [(ngModel)]="anioActual" (change)="actualizar()">
+            <option *ngFor="let anio of anios;let i=index;" 
+                    value="{{anio}}" [selected]="anio==anioActual">{{anio}}</option>
+        </select>
+    </div>
+    <div class="form-group col-lg-5">
+        <label>Mes</label>
+        <select class="form-control"  [(ngModel)]="mesActual" (change)="actualizar()">
+            <option *ngFor="let mes of meses;let i=index;" 
+                    value="{{i}}" [selected]="i==mesActual">{{mes}}</option>
+        </select>
+    </div>
+</div>
+<table class="table table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Número</th>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Duración (min)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="entrenamientos && entrenamientos.length==0">
+            <td colspan="5">No hay datos</td>
+        </tr>
+        <tr *ngFor="let entreno of entrenamientos;let i=index;">
+            <td>{{entreno.numero}}</td>
+            <td>{{entreno.fecha | fecha}}</td>
+            <td>{{entreno.tipo}}</td>
+            <td>{{entreno.duracionMinutos}}</td>
+            <td></td>
+        </tr>
+        <tr *ngIf="!entrenamientos">
+            <td colspan="5">
+                Cargando...
+            </td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="entrenamientos">
+        <tr>
+            <td colspan="5">
+                <button class="btn btn-primary">Agregar</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
