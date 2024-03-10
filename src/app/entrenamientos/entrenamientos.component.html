@@ -11,7 +11,7 @@
         <label>Mes</label>
         <select class="form-control"  [(ngModel)]="mesActual" (change)="actualizar()">
             <option *ngFor="let mes of meses;let i=index;" 
-                    value="{{i}}" [selected]="i==mesActual">{{mes}}</option>
+                    value="{{i+1}}" [selected]="(i+1)==mesActual">{{mes}}</option>
         </select>
     </div>
 </div>

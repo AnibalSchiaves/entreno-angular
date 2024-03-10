@@ -5,6 +5,8 @@ export class EntrenamientoInput {
         public numero:number,
         public tipo:string,
         public fecha:string,
+        public duracionMinutos:number,
+        public observacion:string,
         public ejercicios:{
             ejercicio:string,
             series:number[],

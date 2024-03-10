@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-6">
             <label>Tipo</label>
             <select class="form-control" id="tipo" name="tipo" #tipo="ngModel" [(ngModel)]="entrenamiento.tipo">
                 <option value="Total">Total</option>
@@ -23,6 +23,18 @@
                 <option value="Tirón">Tirón</option>
                 <option value="Específico">Específico</option>
             </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Duración (min)</label>
+            <input type="number" id="duracionMinutos" name="duracionMinutos" class="form-control"
+                    #numero="ngModel" [(ngModel)]="entrenamiento.duracionMinutos">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-8">
+            <label>Observación</label>
+            <textarea class="form-control" id="observacion" name="observacion"
+                        #observacion="ngModel" [(ngModel)]="entrenamiento.observacion" rows="2"></textarea>
         </div>
     </div>
     <div class="row">
@@ -41,13 +53,17 @@
                         <td>
                             <select class="form-control" name="ejercicio_{{i}}" id="ejercicio_{{i}}"
                                     [(ngModel)]="entrenamiento.ejercicios[i].ejercicio">
+                                <option value="">Seleccione...</option>
                                 <option *ngFor="let ej of ejercicios;let j=index;"
                                     value="{{ej.id}}">{{ej.nombre}}</option>
                             </select>
                         </td>
                         <td>
-                            <input type="number" class="form-control" name="series_{{i}}" id="series_{{i}}"
-                                    [(ngModel)]="entrenamiento.ejercicios[i].series">
+                            <div *ngFor="let s of entrenamiento.ejercicios[i].series;let j=index" style="display: inline-block;">
+                                <input type="number" class="form-control" name="series_{{i}}_{{j}}" id="series_{{i}}_{{j}}"
+                                    [(ngModel)]="entrenamiento.ejercicios[i].series[j]" [style.width]="'4em'">
+                            </div>
+                            <input type="button" class="btn btn-secondary" (click)="agregarSerieEn(i)" value="+" style="display: inline;">
                         </td>
                         <td>
                             <select class="form-control" name="unidad_{{i}}" id="unidad_{{i}}"
@@ -66,7 +82,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="3">
-                            <button class="btn btn-secondary" (click)="agregarEjercicio()">Agregar</button>
+                            <input type="button" value="Agregar" class="btn btn-secondary" (click)="agregarEjercicio()">
                         </td>
                     </tr>
                 </tfoot>
@@ -76,7 +92,7 @@
     <div class="row">
         <div class="form-group col-md-8">
             <input type="submit" class="btn btn-primary" value="Guardar">
-            <button class="btn btn-secondary" [style.marginLeft]="'1em'">Cancelar</button>
+            <button class="btn btn-secondary" [style.marginLeft]="'1em'" [routerLink]="['/entrenamientos']">Cancelar</button>
         </div>
     </div>
 </form>

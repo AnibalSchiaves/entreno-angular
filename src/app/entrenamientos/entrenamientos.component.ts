@@ -22,7 +22,7 @@ export class EntrenamientosComponent {
     this.titulo="Administrar Entrenamientos";
     this.anios = [];
     this.anioActual = (new Date()).getFullYear();
-    this.mesActual = (new Date()).getMonth()-1;
+    this.mesActual = (new Date()).getMonth()+1;
     for (let anio=2000;anio<=this.anioActual;anio++) {
       this.anios.push(anio);
     }

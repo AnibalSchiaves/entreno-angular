@@ -9,6 +9,7 @@ export class Entrenamiento {
         public duracionMinutos:number,
         public volumenTotal:number,
         public fecha:string,
+        public observacion:string,
         public ejercicios:EjercicioRealizado[]
     ) {
 
