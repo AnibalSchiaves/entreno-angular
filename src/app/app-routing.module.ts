@@ -5,6 +5,7 @@ import { ErrorComponent } from './error/error.component';
 import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { EjercicioComponent } from './ejercicio/ejercicio.component';
 import { EntrenamientosComponent } from './entrenamientos/entrenamientos.component';
+import { EntrenamientoComponent } from './entrenamiento/entrenamiento.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:"ejercicios/nuevo", component:EjercicioComponent},
   {path:"ejercicios/:id", component:EjercicioComponent},
   {path:"entrenamientos", component:EntrenamientosComponent},
+  {path:"entrenamientos/nuevo", component:EntrenamientoComponent},
   {path:"**", component: ErrorComponent}
 ];
 

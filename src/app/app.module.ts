@@ -12,6 +12,7 @@ import { EjerciciosComponent } from './ejercicios/ejercicios.component';
 import { EjercicioComponent } from './ejercicio/ejercicio.component';
 import { EntrenamientosComponent } from './entrenamientos/entrenamientos.component';
 import { FechaPipe } from './pipes/fecha.pipe';
+import { EntrenamientoComponent } from './entrenamiento/entrenamiento.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FechaPipe } from './pipes/fecha.pipe';
     EjercicioComponent,
     EntrenamientosComponent,
     FechaPipe,
+    EntrenamientoComponent,
   ],
   imports: [
     BrowserModule,

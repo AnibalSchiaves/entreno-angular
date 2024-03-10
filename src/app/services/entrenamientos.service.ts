@@ -21,4 +21,5 @@ export class EntrenamientosService {
     let params = `?anio=${anio}&mes=${mes}`;
     return this.http_.get<Entrenamiento[]>(this.url_base+params);
   }
+  
 }
